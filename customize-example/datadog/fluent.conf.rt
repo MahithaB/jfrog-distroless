@@ -235,7 +235,7 @@
 <match jfrog.**>
   @type datadog
   @id datadog_agent_artifactory
-  api_key 6f8ec0f0ee5bb184bac09a39b65ea955
+  api_key <api_key>
   #optional
   include_tag_key true
 </match>
