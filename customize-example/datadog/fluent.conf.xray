@@ -144,4 +144,5 @@
   api_key <api_key>
   #optional
   include_tag_key true
+  dd_source fluentd
 </match>

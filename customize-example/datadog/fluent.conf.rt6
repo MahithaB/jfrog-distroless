@@ -93,6 +93,14 @@
     password <password>
   </auth>
 </match>
+<filter jfrog.rt.artifactory.request>
+  @type record_transformer
+  enable_ruby true
+  <record>
+    repo ${record["request_url"].include?("/api/docker") && !record["request_url"].include?("/api/docker/null") && !record["request_url"].include?("/api/docker/v2") ? (record["request_url"].split('/')[3]) : ("")}
+    image ${record["request_url"].include?("/api/docker") && !record["request_url"].include?("/api/docker/null") && !record["request_url"].include?("/api/docker/v2")  ? (record["request_url"].split('/')[5]) : ("")}
+  </record>
+</filter>
 #END CALL HOME
 <filter jfrog.rt.artifactory.request>
   @type record_transformer
@@ -109,4 +117,5 @@
   api_key <api_key>
   #optional
   include_tag_key true
+  dd_source fluentd
 </match>
